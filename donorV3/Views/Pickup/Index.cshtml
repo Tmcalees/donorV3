@@ -1,0 +1,36 @@
+﻿@model IEnumerable<VOA.Models.Donor>
+
+@{
+    ViewBag.Title = "Schedule Donation Pickup - Donor Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Display breadcrump bar for Schedule Donation Pickup wizard -->
+<div class="page-header"><h1>Schedule Donation Pickup - Search for Donor</h1></div>
+<ol class="breadcrumb">
+    <li><a href="~/Home">Home</a></li>
+    <li class="active">Search for Donor</li>
+</ol>
+
+<!-- Display donor search form -->
+<form class="container" action="~/Pickup/SearchDonor">
+    <div class="form-group">
+        <label>Last name:</label>
+        <input name="LastName" class="form-control" type="text" placeholder="Enter last name..." autofocus>
+    </div>
+        
+    <div class="form-group">
+            <label>First name:</label>
+            <input name="FirstName" class="form-control" type="text" placeholder="Enter first name...">
+    </div>
+
+    <div class="form-group">
+        <label>Zip code:</label>
+        <input name="ZipCode" class="form-control" type="text" placeholder="Enter zip code...">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="reset" class="btn btn-link">Reset</button>
+    </div>            
+</form>

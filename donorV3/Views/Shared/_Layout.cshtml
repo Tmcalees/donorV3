@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+        var appInsights=window.appInsights||function(config){
+            function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
+        }({
+            instrumentationKey:"d3e7673e-2e4b-48b3-9ce8-7b5725a8dbf8"
+        });
+        
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">            
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">                    
+                    <li class="navbar-link"><a href="/">Donor Maestro</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Call Center<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Pickup">Schedule Pickup</a></li>
+                            <li><a href="/Lookup">Lookup Pickup</a></li>                            
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Store<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Pickup">Enter Dropff</a></li>
+                            <li><a href="/Lookup">Lookup Dropff</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mapping<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Schedule Route</a></li>
+                            <li><a href="/">Truck Slips</a></li>
+                            <li><a href="/">Address List</a></li>
+                            <li><a href="/">Customer Receipts</a></li>
+                        </ul>
+                    </li>                                  
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Pickups by Operator</a></li>
+                            <li><a href="/">Pickups by Hour</a></li>
+                            <li><a href="/">Pickups by Zip Code</a></li>
+                            <li><a href="/">Dropffs by Operator</a></li>
+                            <li><a href="/">Dropffs by Store</a></li>
+                            <li><a href="/">Other Merchandise</a></li>
+                            <li><a href="/">Merchandise Trend</a></li>
+                            <li><a href="/">Zip Summary</a></li>
+                        </ul>
+                    </li>                                       
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Zip Codes</a></li>
+                            <li><a href="#">Operators</a></li>
+                            <li><a href="#">Merchandise</a></li>
+                            <li><a href="#">Donors</a></li>
+                            <li><a href="#">Holidays</a></li>
+                            <li><a href="#">Donations</a></li>
+                            <li><a href="#">Pickup Locations</a></li>
+                            <li><a href="#">Stores</a></li>
+                            <li><a href="#">Config Settings</a></li>
+                        </ul> 
+                    </li>
+                </ul>                
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - VOA Upstate New York</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

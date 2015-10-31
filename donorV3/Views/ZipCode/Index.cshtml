@@ -1,0 +1,95 @@
+﻿@model IEnumerable<VOA.Models.ZipCode>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "ZipCode", FormMethod.Get))
+{
+    <p>
+        Zip Code: @Html.TextBox("ZipCode")
+        Town: @Html.TextBox("Town")
+        <input type="submit" value="Search" />
+    </p>
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Town)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tuesday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wednesday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thursday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Friday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saturday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sunday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeekOfMonth)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Town)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tuesday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wednesday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thursday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Friday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saturday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sunday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeekOfMonth)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

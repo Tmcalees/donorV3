@@ -1,0 +1,42 @@
+﻿@model IEnumerable<VOA.Models.Merchandise>
+
+@{
+    ViewBag.Title = "Schedule Donation - Select Merchandise";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Display breadcrump bar for Schedule Donation Pickup wizard -->
+<div class="page-header"><h1>Schedule Donation Pickup - Select Merchandise</h1></div>
+<ol class="breadcrumb">
+    <li><a href="~/Home">Home</a></li>
+    <li><a href="~/Pickup">Search for Donor</a></li>
+    <li><a href="~/Pickup/SearchDonor">Select Donor</a></li>
+    <li><a href="~/Pickup/SelectDate">Select Pickup Date</a></li>
+    <li class="active">Select Merchandise</li>
+</ol>
+
+<!-- Display a list of merchandise that can be picked up -->
+<form action="~/Pickup/SelectPickupLocation">
+    <div class="col-lg-12">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4" style="padding-bottom: 2px;">
+                <div class="input-group" style="width: 100%;">
+                    <div class="input-group">
+                        <span class="input-group-btn" style="width:100%;">
+                            <button class="btn btn-default" style="width:100%;" type="button">@item.Name</button>
+                        </span>
+                        <input type="text" class="form-control" style="width: 50px;" placeholder="0" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-12">
+        <div class="panel-body">
+            <!-- Continue button -->
+            <button type="submit" class="btn btn-primary">Continue</button>
+        </div>
+    </div>
+
+</form>
