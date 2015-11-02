@@ -1,49 +1,33 @@
 ﻿@model VOA.Models.Merchandise
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Donor Administration - Delete Merchandise";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<!-- Display breadcrump bar for Merchandise Administration -->
+<div class="page-header"><h1>Merchandise Administration - Delete Merchandise</h1></div>
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/Merchandise">Merchandise List</a></li>
+    <li class="active">Delete Merchandise (@Model.Name)</li>
+</ol>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Merchandise</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<form class="container" action="/Merchandise/Delete/@Model.ID" method="post">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ID)
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckBox)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CheckBox)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label>Merchandise Name:</label>
+            <input name="Name" class="form-control" type="text" value="@Model.Name" readonly autofocus>
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
-    }
-</div>
+    </div>    
+
+    <div class="col-lg-12 form-group">
+        <button type="submit" class="btn btn-primary">Confirm Delete</button>
+        <a href="/Merchandise" class="btn btn-link">Cancel</a>
+    </div>
+</form>

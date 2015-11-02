@@ -1,19 +1,19 @@
 ﻿@model VOA.Models.Merchandise
 
 @{
-    ViewBag.Title = "Merchandise Administration - Create Merchandise";
+    ViewBag.Title = "Merchandise Administration - Add Merchandise";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- Display breadcrump bar for Merchandise Administration -->
-<div class="page-header"><h1>Merchandise Administration - Create Merchandise</h1></div>
+<div class="page-header"><h1>Merchandise Administration - Add Merchandise</h1></div>
 <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
     <li><a href="/Merchandise">Merchandise List</a></li>
-    <li class="active">Create Merchandise</li>
+    <li class="active">Add Merchandise</li>
 </ol>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
@@ -27,61 +27,18 @@
 
         <div class="col-lg-6">
             <div class="form-group">
-                <label>Enabled</label>
-                <input name="Active" type="checkbox" class="form-control">
-                <input name="Active" type="hidden" value="false" />
+                <label>Enabled:</label>
+                @Html.EditorFor(model => model.Active)
                 @Html.ValidationMessageFor(model => model.Active)
             </div>
         </div>
 
         <div class="col-lg-12 form-group">
-            <button type="submit" class="btn btn-primary">Create New Merchandise</button>
+            <button type="submit" class="btn btn-primary">Save New Merchandise</button>
             <button type="reset" class="btn btn-link">Reset</button>
             <a href="/Merchandise" class="btn btn-link">Cancel</a>
         </div>
-
-        <!--
-        <div class="form-horizontal">
-            <h4>Merchandise</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name)
-                    @Html.ValidationMessageFor(model => model.Name)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.CheckBox, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CheckBox)
-                    @Html.ValidationMessageFor(model => model.CheckBox)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Active)
-                    @Html.ValidationMessageFor(model => model.Active)
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-        -->
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

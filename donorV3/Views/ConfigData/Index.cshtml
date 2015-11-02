@@ -1,22 +1,27 @@
 ﻿@model IEnumerable<VOA.Models.ConfigData>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Configuration Settings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<!-- Display breadcrump bar for Configuration Data -->
+<div class="page-header"><h1>Configuration Settings</h1></div>
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Configuration Settings</li>
+</ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID)
+            Actions
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Value)
+            Parameter
+        </th>
+        <th>
+            Values
         </th>
         <th></th>
     </tr>
@@ -24,15 +29,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            <div class="btn-group">
+                <a class="btn-sm" style="padding: 5px 5px;" href="/ConfigData/Edit/@Html.DisplayFor(modelItem => item.ID)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>                
+            </div>     
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Value)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID })
-        </td>
+        </td>        
     </tr>
 }
 

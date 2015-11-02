@@ -1,29 +1,48 @@
 ﻿@model IEnumerable<VOA.Models.ZipCode>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Zip Code Administration - List Zip Codes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-@using (Html.BeginForm("Index", "ZipCode", FormMethod.Get))
-{
-    <p>
-        Zip Code: @Html.TextBox("ZipCode")
-        Town: @Html.TextBox("Town")
-        <input type="submit" value="Search" />
-    </p>
-}
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<!-- Display breadcrump bar for Zip Code Administration -->
+<div class="page-header"><h1>Zip Code Administration - List Zip Codes</h1></div>
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Zip Code List</li>
+</ol>
+
+<!-- Display donor search form -->
+<form class="container" action="/ZipCode">
+    <div class="form-group col-lg-4">
+        <input name="ZipCode" class="form-control" type="text" placeholder="Filter by zip code..." value="@ViewBag.ZipCode" autofocus>
+    </div>
+
+    <div class="form-group col-lg-4">
+        <input name="Town" class="form-control" type="text" placeholder="Filter by town..." value="@ViewBag.Town">
+    </div>
+
+    <div class="form-group col-lg-4">
+        &nbsp;
+    </div>
+
+    <div class="form-group col-lg-12">
+        <button type="submit" class="btn btn-primary bottom">Search</button>
+        <a href="/ZipCode" class="btn btn-link">Reset</a>
+        <a href="/ZipCode/Create" class="btn btn-link">Add New Zip Code</a>
+    </div>
+</form>
+
+<table class="table table-hover">
+    <tr class="info">
         <th>
-            @Html.DisplayNameFor(model => model.Code)
+            Actions
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Town)
+            Zip Code
+        </th>
+        <th>
+            Town
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Monday)
@@ -47,13 +66,22 @@
             @Html.DisplayNameFor(model => model.Sunday)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WeekOfMonth)
-        </th>
-        <th></th>
+            Route Frequency
+        </th>        
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            <div class="btn-group">
+                <a class="btn-sm" style="padding: 5px 5px;" href="/ZipCode/Edit/@Html.DisplayFor(modelItem => item.ID)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a class="btn-sm" style="padding: 5px 5px;" href="/ZipCode/Delete/@Html.DisplayFor(modelItem => item.ID)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </div>
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Code)
         </td>
@@ -81,14 +109,32 @@
         <td>
             @Html.DisplayFor(modelItem => item.Sunday)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WeekOfMonth)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
+        <td>            
+            @switch (item.WeekOfMonth)
+            {
+            case 0:
+                <span>Every Week</span>
+                break;
+            case 1:
+                <span>1st Week Only</span>    
+                break;
+            case 2:
+                <span>2nd Week Only</span>
+                break;
+            case 3:
+                <span>3rd Week Only</span>
+                break;
+            case 4:
+                <span>4th Week Only</span>
+                break;
+            case 5:
+                <span>1st & 3rd Weeks</span>
+                break;
+            case 6:
+                <span>2nd & 4th Weeks</span>
+                break;
+            }
+</td>        
     </tr>
 }
 

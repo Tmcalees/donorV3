@@ -17,19 +17,16 @@
 
 <!-- Display donor search form -->
 <form class="container" action="/Donor/Search">
-    <div class="form-group col-lg-4">
-        <label>Last name:</label>
-        <input name="LastName" class="form-control" type="text" placeholder="Enter last name..." value="@ViewBag.SearchLastName" autofocus>
+    <div class="form-group col-lg-4">        
+        <input name="LastName" class="form-control" type="text" placeholder="Last name" value="@ViewBag.SearchLastName" autofocus>
     </div>
 
-    <div class="form-group col-lg-4">
-        <label>First name:</label>
-        <input name="FirstName" class="form-control" type="text" value="@ViewBag.SearchFirstName" placeholder="Enter first name...">
+    <div class="form-group col-lg-4">        
+        <input name="FirstName" class="form-control" type="text" value="@ViewBag.SearchFirstName" placeholder="First name">
     </div>
 
-    <div class="form-group col-lg-4">
-        <label>Zip code:</label>
-        <input name="ZipCode" class="form-control" type="text" value="@ViewBag.SearchZipCode" placeholder="Enter zip code...">
+    <div class="form-group col-lg-4">        
+        <input name="ZipCode" class="form-control" type="text" value="@ViewBag.SearchZipCode" placeholder="Zip code">
     </div>
 
     <div class="form-group col-lg-12">

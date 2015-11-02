@@ -30,10 +30,10 @@
         </div>
 
         <div class="col-lg-6">
-            <label>Enabled:</label>
-            <div class="checkbox">
-                @Html.EditorFor(model => model.Active)
-                @Html.ValidationMessageFor(model => model.Active)            
+            <div class="form-group">
+                <label>Enabled:</label>
+                @Html.EditorFor(model => model.Active, new { @class = "form-control checkbox" })
+                @Html.ValidationMessageFor(model => model.Active)
             </div>
         </div>
 
