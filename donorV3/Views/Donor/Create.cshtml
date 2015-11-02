@@ -1,130 +1,127 @@
 ﻿@model VOA.Models.Donor
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Donor Administration - Create Donor";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<!-- Display breadcrump bar for Donor Administration -->
+<div class="page-header"><h1>Donor Administration - Create Donor</h1></div>
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/Donor">Donor List</a></li>
+    <li class="active">Create Donor</li>
+</ol>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Donor</h4>
-        <hr />
+    <div class="container">
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName)
+        <div class="col-lg-4">
+            <div class="form-group">
+
+                <input name="FirstName" class="form-control" type="text" placeholder="First Name" autofocus>
+                 @Html.ValidationMessageFor(model => model.FirstName)                
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="form-group">
+
+                <input name="LastName" class="form-control" type="text" placeholder="Last Name">
                 @Html.ValidationMessageFor(model => model.LastName)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName)
-                @Html.ValidationMessageFor(model => model.FirstName)
-            </div>
-        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HouseNumber, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HouseNumber)
+                <input name="HouseNumber" id="HouseNumber" class="form-control" type="text" placeholder="House #">
                 @Html.ValidationMessageFor(model => model.HouseNumber)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Street1, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Street1)
+        <div class="col-lg-4">
+            <div class="form-group">
+ 
+                <input name="Street1" id="Street1" class="form-control" type="text" placeholder="Street1">
                 @Html.ValidationMessageFor(model => model.Street1)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Street2, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Street2)
+        <div class="col-lg-4">
+            <div class="form-group">
+   
+                <input name="Street2" id="Street2" class="form-control" type="text" placeholder="Street2">
                 @Html.ValidationMessageFor(model => model.Street2)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.City)
+        <div class="col-lg-4">
+            <div class="form-group">
+ 
+                <input name="City" class="form-control" type="text" placeholder="City">
                 @Html.ValidationMessageFor(model => model.City)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.State, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.State)
+        <div class="col-lg-4">
+            <div class="form-group">
+
+                <input name="State" class="form-control" type="text" placeholder="State">
                 @Html.ValidationMessageFor(model => model.State)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ZipCode, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ZipCode)
+        <div class="col-lg-4">
+            <div class="form-group">
+ 
+                <input name="ZipCode" class="form-control" type="text" placeholder="Zip Code">
                 @Html.ValidationMessageFor(model => model.ZipCode)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Telephone, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Telephone)
+        <div class="col-lg-4">
+            <div class="form-group">
+
+                <input name="Telephone" class="form-control" type="text" placeholder="Telephone #">
                 @Html.ValidationMessageFor(model => model.Telephone)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Notes)
-                @Html.ValidationMessageFor(model => model.Notes)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AltPhone, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AltPhone)
+        <div class="col-lg-4">
+            <div class="form-group">
+ 
+                <input name="AltPhone" class="form-control" type="text" placeholder="Alternate Telephone #">
                 @Html.ValidationMessageFor(model => model.AltPhone)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email)
+        <div class="col-lg-4">
+            <div class="form-group">
+ 
+                <input name="Email" class="form-control" type="text" placeholder="Email Address">
                 @Html.ValidationMessageFor(model => model.Email)
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="col-lg-12">
+            <div class="form-group">
+
+                <input name="Notes" class="form-control" type="text" placeholder="Notes">
+                @Html.ValidationMessageFor(model => model.Notes)
             </div>
         </div>
-    </div>
+
+        <div class="col-lg-12 form-group">
+            <button type="submit" class="btn btn-primary">Create New Donor</button>
+            <button type="reset" class="btn btn-link">Reset</button>
+            <a href="/Donor" class="btn btn-link">Cancel</a>
+        </div>  
+   </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

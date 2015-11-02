@@ -16,11 +16,14 @@
 </ol>
 
 <!-- Add new donor button -->
-<div class="panel-body"><a class="btn btn-default" href="/Pickup/AddDonor">Add New Donor</a></div>
+<div class="panel-body"><a class="btn btn-default" href="/Donor/Create">Add New Donor</a></div>
 
 <!-- Table displaying list of donors matching search criteria -->
+<div class="label label-default pull-right">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+</div>
 <table class="table table-hover">
-    <tr>
+    <tr class="info">
         <th>
             &nbsp;
         </th>
@@ -110,9 +113,7 @@
 </table>
 
 <!-- Table footer with paging content -->
-<div class="container">
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-    @Html.PagedListPager(Model, page => Url.Action("SearchDonor",
+<div class="container">    
+    @Html.PagedListPager(Model, page => Url.Action("Donor",
                 new { page, lastName = ViewBag.SearchLastName, firstName = ViewBag.SearchFirstName, zipCode = ViewBag.SearchZipCode }))
 </div>

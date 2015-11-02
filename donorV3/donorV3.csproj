@@ -256,7 +256,6 @@
     <Content Include="Views\ConfigData\Index.cshtml" />
     <Content Include="Views\Donor\Create.cshtml" />
     <Content Include="Views\Donor\Delete.cshtml" />
-    <Content Include="Views\Donor\Details.cshtml" />
     <Content Include="Views\Donor\Edit.cshtml" />
     <Content Include="Views\Donor\Index.cshtml" />
     <Content Include="Views\Holiday\Create.cshtml" />
@@ -266,7 +265,6 @@
     <Content Include="Views\Holiday\Index.cshtml" />
     <Content Include="Views\Merchandise\Create.cshtml" />
     <Content Include="Views\Merchandise\Delete.cshtml" />
-    <Content Include="Views\Merchandise\Details.cshtml" />
     <Content Include="Views\Merchandise\Edit.cshtml" />
     <Content Include="Views\Merchandise\Index.cshtml" />
     <Content Include="Views\PickupLocation\Create.cshtml" />

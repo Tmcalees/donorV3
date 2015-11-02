@@ -15,56 +15,42 @@ namespace VOA.Models
         private DonorDBContext db = new DonorDBContext();
 
         // GET: /Donor/
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string lastName, string firstName, string zipCode, int? page)
+        {            
+               return Search(lastName, firstName, zipCode, page);
+        }
+
+        // GET: /Donor/Search
+        public ActionResult Search(string lastName, string firstName, string zipCode, int? page)
         {
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
-            ViewBag.AddressSortParm = sortOrder == "Address" ? "address_desc" : "address";
-
-            if (searchString != null)
-            {
-                page = 1;  
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
+            ViewBag.SearchLastName = lastName;
+            ViewBag.SearchFirstName = firstName;
+            ViewBag.SearchZipCode = zipCode;
 
             var donors = from d in db.Donors
-                              select d;
-            if (!String.IsNullOrEmpty(searchString))
+                         select d;
+
+            if (!String.IsNullOrEmpty(lastName))
             {
-                donors = donors.Where(d => d.LastName.ToUpper().Contains(searchString.ToUpper())
-                    || d.HouseNumber.ToUpper().Contains(searchString.ToUpper())
-                    || d.Street1.ToUpper().Contains(searchString.ToUpper())
-                    || d.Telephone.ToUpper().Contains(searchString.ToUpper())
-                    || d.AltPhone.ToUpper().Contains(searchString.ToUpper())
-                    || d.Email.ToUpper().Contains(searchString.ToUpper())
-                    );        
-            }      
- 
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    donors = donors.OrderByDescending(d => d.LastName);
-                    break;
-                case "address":
-                    donors = donors.OrderBy(d => d.Street1);
-                    break;
-                case "address_desc":
-                    donors = donors.OrderByDescending(d => d.Street1);
-                    break;
-                default:
-                    donors = donors.OrderBy(d => d.LastName);
-                    break;
+                donors = donors.Where(d => d.LastName.ToUpper().Contains(lastName.ToUpper()));
             }
+
+            if (!String.IsNullOrEmpty(firstName))
+            {
+                donors = donors.Where(d => d.FirstName.ToUpper().Contains(firstName.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(zipCode))
+            {
+                donors = donors.Where(d => d.ZipCode.ToUpper().Contains(zipCode.ToUpper()));
+            }
+
+            donors = donors.OrderBy(d => d.LastName);
 
             int pageSize = 25;
             int pageNumber = (page ?? 1);
 
-             return View(donors.ToPagedList(pageNumber, pageSize));
+            return View("Index", donors.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Donor/Details/5

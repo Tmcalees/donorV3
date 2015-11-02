@@ -22,6 +22,7 @@ namespace VOA.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 merchandise = merchandise.Where(m => m.Name.ToUpper().Contains(searchString.ToUpper()));
+                ViewBag.SearchString = searchString;
 
             }
             return View(merchandise.ToList());
@@ -53,7 +54,7 @@ namespace VOA.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,Name,CheckBox,Active")] Merchandise merchandise)
+        public ActionResult Create([Bind(Include="ID,Name,Active")] Merchandise merchandise)
         {
             if (ModelState.IsValid)
             {

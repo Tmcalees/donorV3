@@ -1,53 +1,69 @@
 ﻿@model IEnumerable<VOA.Models.Merchandise>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Merchandise Administration - List Merchandise";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<!-- Display breadcrump bar for Merchandise Administration -->
+<div class="page-header"><h1>Merchandise Administration - List Merchandise</h1></div>
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Merchandise List</li>
+</ol>
 
-@using (Html.BeginForm())
-{
-    <p>
-        Name: @Html.TextBox("SearchString")
-        @Html.CheckBox("ShowDisabled") Show Disabled Merchandise
-        <input type="submit" value="Search" />
-    </p>
-}
+<!-- Display donor search form -->
+<form class="container" action="/Merchandise">
+    <div class="form-group col-lg-4">
+        <input name="SearchString" class="form-control" type="text" placeholder="Merchandise name..." value="@ViewBag.SearchString" autofocus>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <div class="form-group col-lg-4">
+        <button type="submit" class="btn btn-primary bottom">Search</button>   
+    </div>
+
+    <div class="form-group col-lg-4">
+        &nbsp;
+    </div>
+
+    <div class="form-group col-lg-12">
+        <button type="submit" class="btn btn-primary bottom">Search</button>
+        <a href="/Merchandise" class="btn btn-link">Reset</a>
+        <a href="/Merchandise/Create" class="btn btn-link">Add New Merchandise</a>
+    </div>
+</form>
+
 <table class="table">
-    <tr>
+    <tr class="info">
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Actions
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CheckBox)
+            Merchandise Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Active)
+            Enabled
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>    
+            <div class="btn-group">
+                <a class="btn-sm" style="padding: 5px 5px;" href="/Merchandise/Edit/@Html.DisplayFor(modelItem => item.ID)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+                <a class="btn-sm" style="padding: 5px 5px;" href="/Merchandise/Delete/@Html.DisplayFor(modelItem => item.ID)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </div>     
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CheckBox)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Active)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
